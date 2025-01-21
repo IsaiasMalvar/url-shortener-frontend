@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 @layer utilities {
-  .test {
-    background: rgb(245, 105, 105);
+  .mixed-bg {
+    background: rgb(0, 50, 222);
     background: linear-gradient(
       90deg,
-      rgba(245, 105, 105, 1) 0%,
-      rgba(28, 4, 195, 1) 100%
+      rgba(0, 50, 222, 1) 0%,
+      rgba(59, 97, 230, 1) 0%,
+      rgba(112, 140, 237, 1) 0%,
+      rgba(146, 168, 241, 1) 0%,
+      rgba(174, 191, 245, 1) 40%,
+      rgba(255, 255, 255, 1) 100%
     );
   }
 }
