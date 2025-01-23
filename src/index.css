@@ -4,15 +4,37 @@
 
 @layer utilities {
   .mixed-bg {
-    background: rgb(0, 50, 222);
-    background: linear-gradient(
-      90deg,
-      rgba(0, 50, 222, 1) 0%,
-      rgba(59, 97, 230, 1) 0%,
-      rgba(112, 140, 237, 1) 0%,
-      rgba(146, 168, 241, 1) 0%,
-      rgba(174, 191, 245, 1) 40%,
-      rgba(255, 255, 255, 1) 100%
+    background: rgb(0, 0, 0);
+    background: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(242, 241, 241, 1) 0%,
+      rgba(255, 255, 255, 1) 10%,
+      rgba(6, 0, 0, 1) 49%
+    );
+  }
+  .white-shadow {
+    -webkit-box-shadow: 32px 21px 22px -6px rgba(255, 255, 255, 0.47);
+    -moz-box-shadow: 32px 21px 22px -6px rgba(255, 255, 255, 0.47);
+    box-shadow: 32px 21px 22px -6px rgba(255, 255, 255, 0.47);
+  }
+
+  .forwards {
+    animation-fill-mode: forwards;
+  }
+
+  .poli {
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
     );
   }
 }

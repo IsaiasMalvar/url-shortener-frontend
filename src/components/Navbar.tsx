@@ -1,6 +1,6 @@
 const Navbar = (): React.ReactElement => {
   return (
-    <nav className="mobile:p-3 md:p-0 mobile:mt-10 md:mt-0 md:border-t-0 bg-black gap-x-1 font-oswald font-semibold  md:w-[30%] h-[105px]  flex flex-wrap mobile:items-center md:items-start mobile:text-xl  md:text-2xl mobile:w-full">
+    <nav className="mobile:p-3 md:p-0  md:mt-0 md:border-t-0 bg-black gap-x-1 font-oswald font-semibold    flex flex-wrap mobile:items-center md:items-start mobile:text-xl  md:text-2xl mobile:w-full">
       <a
         href="/home"
         className="cursor-pointer bg-white hover:bg-black text-center hover:text-white hover:duration-200 flex-1 h-[40px]   p-2  text-black"
