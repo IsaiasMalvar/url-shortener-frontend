@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-
-import LoginForm from "../components/LoginForm";
 import { useAppContext } from "../context/contextUtility";
 import { Link, useNavigate } from "react-router-dom";
-import Curtain from "../components/Curtain";
+import RegisterForm from "../components/RegisterForm";
 
-const LoginPage = () => {
+const RegisterPage = (): React.ReactElement => {
   const { token } = useAppContext();
   const navigate = useNavigate();
 
@@ -20,17 +18,17 @@ const LoginPage = () => {
       <div className="w-full h-full flex flex-col justify-center items-center backdrop-opacity-95 gap-y-10 mobile: ">
         <Link
           to="/home"
-          className="font-oswald text-8xl text-white md:block  mb-10 cursor-pointer "
+          className="font-oswald text-8xl text-white md:block  mb-5 cursor-pointer "
         >
           URLess
         </Link>
-        <Curtain />
+
         <div>
-          <LoginForm />
+          <RegisterForm />
         </div>
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

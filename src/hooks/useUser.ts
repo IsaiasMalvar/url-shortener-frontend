@@ -3,7 +3,7 @@ import { JWT, LoginCredentials, RegisterCredentials } from "../types/auth";
 import { useAppContext } from "../context/contextUtility";
 
 const useUser = () => {
-  const { setToken } = useAppContext();
+  const { setToken, setRegistrationResponse } = useAppContext();
   const apiUrl = import.meta.env.VITE_API_URL;
   const loginEndpoint = apiUrl + "/api/auth/public/login";
   const registerEndpoint = apiUrl + "/api/auth/public/register";
@@ -55,7 +55,10 @@ const useUser = () => {
     }
 
     const responseData = await response.text();
-    console.log(responseData);
+
+    if (responseData) {
+      setRegistrationResponse(responseData);
+    }
   };
 
   return { loginSubmit, registerSubmit };

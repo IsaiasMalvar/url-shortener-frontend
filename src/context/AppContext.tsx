@@ -140,6 +140,8 @@ import { createContext } from "react";
 interface AppContextProps {
   token: string | null;
   setToken: (token: string) => void;
+  registrationResponse: string | null;
+  setRegistrationResponse: (registrationResponse: string | null) => void;
 }
 
 const AppContext = createContext<AppContextProps>({} as AppContextProps);
