@@ -14,8 +14,14 @@ export const AppProvider = ({
 
   const [token, setToken] = useState<string | null>(getToken);
 
+  const [registrationResponse, setRegistrationResponse] = useState<
+    string | null
+  >(null);
+
   return (
-    <AppContext.Provider value={{ token, setToken }}>
+    <AppContext.Provider
+      value={{ token, setToken, registrationResponse, setRegistrationResponse }}
+    >
       {children}
     </AppContext.Provider>
   );

@@ -5,7 +5,7 @@ const Layout = (): React.ReactElement => {
   const location = useLocation();
   const isNavBarRendered =
     location.pathname.includes("/login") ||
-    location.pathname.includes("/signup");
+    location.pathname.includes("/register");
 
   return (
     <>
