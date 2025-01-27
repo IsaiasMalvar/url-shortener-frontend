@@ -3,7 +3,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import useUser from "../hooks/useUser";
 import { LoginCredentials } from "../types/auth";
-import lock from "../assets/lock.svg";
 
 const LoginForm = (): React.ReactElement => {
   const loginSchema = yup
@@ -26,8 +25,7 @@ const LoginForm = (): React.ReactElement => {
   return (
     <div className="w-[100%] bg-black p-5 border-gray-50 border-2 rounded-lg font-semibold font-mono white-shadow">
       <div className="flex gap-x-3 justify-center items-center mb-2">
-        <img src={lock} className="mb-1" />
-        <span className="text-sm text-white">Identify yourself!</span>
+        <span className="text-sm text-white">Good to have you back!</span>
       </div>
 
       <form

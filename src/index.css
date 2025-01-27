@@ -4,19 +4,24 @@
 
 @layer utilities {
   .mixed-bg {
-    background: rgb(0, 0, 0);
+    background: rgb(4, 0, 0);
     background: radial-gradient(
       circle,
-      rgba(0, 0, 0, 1) 0%,
-      rgba(242, 241, 241, 1) 0%,
-      rgba(255, 255, 255, 1) 10%,
-      rgba(6, 0, 0, 1) 49%
+      rgba(4, 0, 0, 1) 0%,
+      rgba(255, 255, 255, 1) 100%
     );
   }
   .white-shadow {
     -webkit-box-shadow: 32px 21px 22px -6px rgba(255, 255, 255, 0.47);
     -moz-box-shadow: 32px 21px 22px -6px rgba(255, 255, 255, 0.47);
     box-shadow: 32px 21px 22px -6px rgba(255, 255, 255, 0.47);
+  }
+
+  .rounded-edge {
+    height: 200px;
+    aspect-ratio: 3/2;
+
+    clip-path: ellipse(85% 100% at 50% 0%);
   }
 
   .forwards {

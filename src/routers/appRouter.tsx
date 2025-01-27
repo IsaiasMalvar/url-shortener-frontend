@@ -2,7 +2,11 @@ import { createBrowserRouter, Navigate, RouteObject } from "react-router";
 import App from "../App";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
-import RegisterPage from "../pages/RegisterPage";
+import { lazy, Suspense } from "react";
+import hourglass from "../assets/hourglass.svg";
+import DashboardPage from "../pages/DashboardPage";
+
+const RegisterPage = lazy(() => import("../pages/RegisterPage"));
 
 const routes: RouteObject[] = [
   {
@@ -23,7 +27,21 @@ const routes: RouteObject[] = [
       },
       {
         path: "/register",
-        element: <RegisterPage />,
+        element: (
+          <Suspense
+            fallback={
+              <div className="h-screen w-screen bg-black flex flex-col justify-center items-center">
+                <img src={hourglass} />
+              </div>
+            }
+          >
+            <RegisterPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/dashboard",
+        element: <DashboardPage />,
       },
     ],
   },
