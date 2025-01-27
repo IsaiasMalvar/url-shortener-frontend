@@ -1,12 +1,24 @@
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { useAppContext } from "../context/contextUtility";
+import { useFetchTotalClicks } from "../hooks/useQuery";
 
 const HomePage = (): React.ReactElement => {
+  const { token } = useAppContext();
+  const { data } = useFetchTotalClicks(token!);
+
+  useEffect(() => {
+    if (token) {
+      console.log(token);
+      console.log(data);
+    }
+  }, [data, token]);
   const location = useLocation();
   console.log(location.pathname);
+
   return (
-    <main className="overflow-hidden h-screen bg-black mobile:flex mobile:flex-col ">
-      {" "}
+    <main className="overflow-hidden h-[calc(100vh-40px)] bg-black mobile:flex mobile:flex-col relative ">
       <header className="mobile:block md:hidden p-3 bg-black">
         <h1 className="font-oswald text-8xl text-white text-center">URLess</h1>
       </header>
@@ -17,7 +29,7 @@ const HomePage = (): React.ReactElement => {
               SHORT, SWEET AND TRACKED
             </h1>
           </div>
-          <span className="text-wrap">
+          <span className="text-wrap font-mono w-[80%]">
             With URLess, you have the ability to simplify lengthy and unwieldy
             URLs, transforming them into concise and manageable links.
             Additionally, our platform provides you with the tools to
@@ -52,7 +64,10 @@ const HomePage = (): React.ReactElement => {
               </span>
             </div>
 
-            <a className="mb-10 font-bold w-1/2  mobile:text-xl text-3xl rounded-md bg-gradient-to-r from-gray-50 text-black to-gray-500  text-center p-2">
+            <a
+              href="/dashboard"
+              className="cursor-pointer mb-10 font-bold w-[30%] hover:from-gray-700 hover:to-gray-900 hover:scale-105 hover:text-white mobile:text-xl text-3xl rounded-md bg-gradient-to-r from-gray-50 text-black to-gray-500  text-center p-2 transition-all duration-300"
+            >
               CLICK HERE TO SHORTEN URL
             </a>
           </div>

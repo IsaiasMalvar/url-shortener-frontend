@@ -9,7 +9,10 @@ const Navbar = (): React.ReactElement => {
         HOME
       </a>
 
-      <a className="cursor-pointer bg-white hover:bg-black text-center hover:text-white hover:duration-200 flex-1 h-[40px] p-2  text-black">
+      <a
+        href="/dashboard"
+        className="cursor-pointer bg-white hover:bg-black text-center hover:text-white hover:duration-200 flex-1 h-[40px] p-2  text-black"
+      >
         DASHBOARD
       </a>
       <a className="cursor-pointer bg-white  hover:bg-black   hover:text-white hover:duration-200  flex-1 h-[40px]  text-center  p-2    text-black">
