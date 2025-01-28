@@ -1,7 +1,7 @@
 import { ChartOptions } from "chart.js";
 import { Click } from "../types/data";
 
-export const getLabels = (data: Click[]) => {
+export const getLabels = (data: Click[]): string[] => {
   const labels = data.map((click) => {
     return click.clickDate;
   });
@@ -18,7 +18,9 @@ export const getDataset = (data: Click[]) => {
   const dataset = data.map((click) => {
     return click.count;
   });
-  return dataset;
+
+  const reversedDataset = dataset.reverse();
+  return reversedDataset;
 };
 
 export const chartOptions: ChartOptions<"bar"> = {

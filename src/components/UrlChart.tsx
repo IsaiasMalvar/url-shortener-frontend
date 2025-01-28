@@ -11,6 +11,7 @@ import { Bar } from "react-chartjs-2";
 import { useEffect, useState } from "react";
 import { useFetchClicksPerUrl, useFetchTotalClicks } from "../hooks/useQuery";
 import { chartOptions, getDataset, getLabels } from "../utils/chartConfig";
+import toast from "react-hot-toast";
 
 interface URLChart {
   slug?: string;
@@ -27,7 +28,7 @@ const UrlChart = ({ slug, token }: URLChart) => {
     Legend,
   );
 
-  const { data: totalData } = useFetchTotalClicks(token!);
+  const { data: totalData, isError } = useFetchTotalClicks(token!);
   const { data: urlData } = useFetchClicksPerUrl(token!, slug!);
 
   const [labels, setLabels] = useState<string[]>([]);
@@ -50,22 +51,25 @@ const UrlChart = ({ slug, token }: URLChart) => {
     if (slug && urlData) {
       setLabels(getLabels(urlData));
       setDataset(getDataset(urlData));
-      console.log("urlData");
-      console.log(urlData);
     } else if (totalData) {
       setLabels(getLabels(totalData));
       setDataset(getDataset(totalData));
-      console.log("totalData");
-      console.log(totalData);
     }
-  }, [urlData, totalData, slug]);
+    if (isError) {
+      toast.error("Data could not be properly loaded.");
+    }
+  }, [urlData, totalData, slug, isError]);
 
-  return (
+  return totalData || urlData ? (
     <Bar
       options={chartOptions}
       data={dataSet}
       className="text-white w-[20rem]"
     />
+  ) : (
+    <div className="text-5xl text-white p-5 text-center font-mono">
+      NO DATA TO SHOW YET
+    </div>
   );
 };
 

@@ -4,12 +4,15 @@ import { URLRequest, URLResponse } from "../types/data";
 import { useForm } from "react-hook-form";
 import { postUrl, usePostRequest } from "../hooks/useQuery";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 interface URLCreatorProps {
   token: string;
+  setEmptySlug: (empty: string) => void;
 }
 
-const URLCreator = ({ token }: URLCreatorProps) => {
+const URLCreator = ({ token, setEmptySlug }: URLCreatorProps) => {
+  const apiURL = import.meta.env.VITE_API_URL;
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const urlInfoSchema = yup
@@ -26,14 +29,12 @@ const URLCreator = ({ token }: URLCreatorProps) => {
     resolver: yupResolver(urlInfoSchema),
   });
 
-  const { mutate, isSuccess, data } = usePostRequest<
+  const { mutate, isSuccess, data, isError } = usePostRequest<
     URLResponse,
     { data: URLRequest; token: string }
   >({
     mutationFn: postUrl,
-    onSuccess: () => {
-      console.log("URL successfully created!");
-    },
+    onSuccess: () => {},
     onError: (err) => {
       console.error("Error creating URL:", err.message);
     },
@@ -42,14 +43,40 @@ const URLCreator = ({ token }: URLCreatorProps) => {
 
   const onSubmit = (data: URLRequest) => {
     setIsLoading(true);
+    if (
+      !data.originalUrl.startsWith("https://") &&
+      !data.originalUrl.startsWith("http://")
+    ) {
+      data.originalUrl = "https://" + data.originalUrl;
+    }
     mutate({ data, token });
+  };
+
+  const copyToClipboard = async (text: string) => {
+    if (text) {
+      try {
+        navigator.clipboard.writeText(text);
+        toast.success("Link copied to clipboard!");
+      } catch (error) {
+        if (error instanceof Error) {
+          toast.error("Error copying link: " + error.message);
+        } else {
+          toast.error("Could not copy the link to clipboard");
+        }
+      }
+    }
+    return;
   };
 
   useEffect(() => {
     if (isSuccess) {
       setIsLoading(false);
     }
-  }, [isSuccess]);
+
+    if (isError) {
+      toast.error("URL could not be successfully created.");
+    }
+  }, [isError, isSuccess]);
 
   return (
     <section className="flex flex-col p-3 w-[40%] gap-y-5  items-center h-[350px] overflow-auto">
@@ -83,9 +110,12 @@ const URLCreator = ({ token }: URLCreatorProps) => {
             {" "}
             NEW URL
           </span>
-          <span className="bg-white p-2 w-[50%] break-all">
-            {data?.shortUrl}
-          </span>
+          <button
+            onClick={(e) => copyToClipboard(e.currentTarget.textContent || "")}
+            className="cursor-pointer bg-white p-2 w-[50%] break-all"
+          >
+            {`${apiURL + "/" + data?.shortUrl}`}
+          </button>
         </div>
       )}
       {isLoading && (
@@ -96,6 +126,12 @@ const URLCreator = ({ token }: URLCreatorProps) => {
           </span>
         </div>
       )}
+      <button
+        className="uppercase text-xl overflow-y-visible  border-b-2 border-white text-white font-oswald font-bold hover:scale-105 transition-all duration-200"
+        onClick={() => setEmptySlug("")}
+      >
+        Check total analytics
+      </button>
     </section>
   );
 };

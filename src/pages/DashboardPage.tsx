@@ -28,7 +28,6 @@ const DashboardPage = (): React.ReactElement => {
   const navigate = useNavigate();
   const { token } = useAppContext();
   const [guaranteedToken, setGuaranteedToken] = useState("");
-
   const [slug, setSlug] = useState<string>("");
 
   useEffect(() => {
@@ -50,7 +49,7 @@ const DashboardPage = (): React.ReactElement => {
         {guaranteedToken && (
           <UrlList token={guaranteedToken} setSlug={setSlug} />
         )}
-        <URLCreator token={guaranteedToken} />
+        <URLCreator token={guaranteedToken} setEmptySlug={setSlug} />
       </div>
     </div>
   );
