@@ -1,29 +1,70 @@
 import { createBrowserRouter, Navigate, RouteObject } from "react-router";
-import App from "../App";
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
 import { lazy, Suspense } from "react";
-import hourglass from "../assets/hourglass.svg";
-import DashboardPage from "../pages/DashboardPage";
+import Loader from "../components/Loader";
+import NotFoundPage from "../pages/NotFoundPage";
 
+const App = lazy(() => import("../App"));
+const HomePage = lazy(() => import("../pages/HomePage"));
+const LoginPage = lazy(() => import("../pages/LoginPage"));
 const RegisterPage = lazy(() => import("../pages/RegisterPage"));
+const DashboardPage = lazy(() => import("../pages/DashboardPage"));
 
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <App />,
+    element: (
+      <Suspense
+        fallback={
+          <div className="h-screen w-screen bg-black flex flex-col justify-center items-center">
+            <Loader />
+          </div>
+        }
+      >
+        <App />
+      </Suspense>
+    ),
     children: [
       {
         index: true,
-        element: <Navigate to="/home" />,
+        element: (
+          <Suspense
+            fallback={
+              <div className="h-screen w-screen bg-black flex flex-col justify-center items-center">
+                <Loader />
+              </div>
+            }
+          >
+            <Navigate to="/home" />
+          </Suspense>
+        ),
       },
       {
         path: "/home",
-        element: <HomePage />,
+        element: (
+          <Suspense
+            fallback={
+              <div className="h-screen w-screen bg-black flex flex-col justify-center items-center">
+                <Loader />
+              </div>
+            }
+          >
+            <HomePage />
+          </Suspense>
+        ),
       },
       {
         path: "/login",
-        element: <LoginPage />,
+        element: (
+          <Suspense
+            fallback={
+              <div className="h-screen w-screen bg-black flex flex-col justify-center items-center">
+                <Loader />
+              </div>
+            }
+          >
+            <LoginPage />
+          </Suspense>
+        ),
       },
       {
         path: "/register",
@@ -31,7 +72,7 @@ const routes: RouteObject[] = [
           <Suspense
             fallback={
               <div className="h-screen w-screen bg-black flex flex-col justify-center items-center">
-                <img src={hourglass} />
+                <Loader />
               </div>
             }
           >
@@ -41,7 +82,21 @@ const routes: RouteObject[] = [
       },
       {
         path: "/dashboard",
-        element: <DashboardPage />,
+        element: (
+          <Suspense
+            fallback={
+              <div className="h-screen w-screen bg-black flex flex-col justify-center items-center">
+                <Loader />
+              </div>
+            }
+          >
+            <DashboardPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/*",
+        element: <NotFoundPage />,
       },
     ],
   },

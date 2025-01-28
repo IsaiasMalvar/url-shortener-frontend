@@ -17,7 +17,6 @@ const fetchTotalClicks = async (token: string) => {
   });
 
   const data = await response.json();
-  console.log(data);
   return data;
 };
 
@@ -48,7 +47,6 @@ const fetchAllUrls = async (token: string) => {
   });
 
   const data: URLInfo[] = await response.json();
-  console.log(data);
   return data;
 };
 
@@ -71,8 +69,6 @@ export const postUrl = async ({
   if (!response.ok) {
     throw new Error("Failed to create URL");
   }
-
-  console.log(response);
 
   return response.json();
 };

@@ -13,6 +13,9 @@ export const AppProvider = ({
     : null;
 
   const [token, setToken] = useState<string | null>(getToken);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [registrationResponse, setRegistrationResponse] = useState<
     string | null
@@ -20,7 +23,18 @@ export const AppProvider = ({
 
   return (
     <AppContext.Provider
-      value={{ token, setToken, registrationResponse, setRegistrationResponse }}
+      value={{
+        token,
+        setToken,
+        registrationResponse,
+        setRegistrationResponse,
+        isError,
+        setIsError,
+        errorMessage,
+        setErrorMessage,
+        isLoading,
+        setIsLoading,
+      }}
     >
       {children}
     </AppContext.Provider>
