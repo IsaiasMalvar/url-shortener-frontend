@@ -74,8 +74,8 @@ You **must** download and set up the backend repository to fully utilize URLess.
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/your-username/urless.git
-   cd urless
+   git clone https://github.com/IsaiasMalvar/url-shortener-frontend.git
+   cd url-shortener-frontend
    ```
 
 2. **Install Dependencies**:
@@ -89,7 +89,6 @@ You **must** download and set up the backend repository to fully utilize URLess.
 
    ```env
    VITE_API_BASE_URL=http://localhost:8080  # Replace with your backend URL
-   VITE_JWT_SECRET=your-jwt-secret
    ```
 
 4. **Run the Backend**:
