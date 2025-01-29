@@ -61,6 +61,7 @@ const useUser = () => {
   const registerSubmit: SubmitHandler<RegisterCredentials> = async (
     data: RegisterCredentials,
   ) => {
+    setIsLoading(true);
     try {
       const response = await fetch(registerEndpoint, {
         method: "POST",
@@ -78,9 +79,11 @@ const useUser = () => {
 
       if (responseData) {
         setRegistrationResponse(responseData);
+        setIsLoading(false);
       }
     } catch (error: unknown) {
       if (error instanceof Error) {
+        setIsLoading(false);
         setIsError(true);
         setErrorMessage(error.message);
       }
