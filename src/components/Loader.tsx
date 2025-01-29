@@ -1,16 +1,9 @@
-interface LoaderProps {
-  height?: string;
-  width?: string;
-}
-
-const Loader = ({ height, width }: LoaderProps): React.ReactElement => {
+const Loader = (): React.ReactElement => {
   return (
     <div role="status">
       <svg
         aria-hidden="true"
-        className={`inline w-[${width ? width : "200"}px] h-[${
-          height ? height : "200"
-        }px] text-gray-50 animate-spin  fill-gray-500`}
+        className={`inline w-[40px] h-[40px] text-white animate-spin  fill-blue-700`}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

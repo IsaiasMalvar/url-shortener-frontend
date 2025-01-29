@@ -42,7 +42,7 @@ const LoginForm = (): React.ReactElement => {
   return (
     <div className="md:w-[30rem]  mobile:w-[100%] bg-black p-5   border-[3px] rounded-lg font-semibold font-mono white-shadow flex flex-col">
       <div className="flex gap-x-3 justify-center items-center mb-2">
-        <span className="text-base text-white uppercase">
+        <span className="text-base text-white uppercase text-center">
           Sign in to your URLess account
         </span>
       </div>
@@ -73,10 +73,12 @@ const LoginForm = (): React.ReactElement => {
         </p>
 
         <button
+          disabled={isLoading}
           type="submit"
-          className="bg-white p-2 border-2 border-black rounded-lg w-1/2 text-black m-auto hover:bg-gray-700 hover:scale-110 hover:text-white duration-150 cursor-pointer mt-1 mb-3"
+          className={`bg-white disabled:scale-100 disabled:bg-transparent disabled:cursor-none p-2 border-2 border-black rounded-lg w-1/2 text-black m-auto hover:bg-gray-700 hover:scale-110 hover:text-white duration-150 cursor-pointer mt-1 mb-3
+          `}
         >
-          LOG IN
+          {isLoading ? <Loader /> : "LOG IN"}
         </button>
       </form>
       <a
