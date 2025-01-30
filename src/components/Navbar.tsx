@@ -6,29 +6,29 @@ interface NavbarProps {
 
 const Navbar = ({ token }: NavbarProps): React.ReactElement => {
   return (
-    <nav className="sticky md:p-0  md:mt-0 md:border-t-0 bg-black gap-x-1 font-oswald font-semibold    flex flex-wrap mobile:items-center md:items-start mobile:text-xl  md:text-2xl mobile:w-full">
+    <nav className="fixed md:p-0  md:mt-0 md:border-t-0 bg-black gap-x-1 font-oswald font-semibold  h-[60px]  flex flex-wrap mobile:items-center md:items-start   md:text-4xl mobile:w-full mobile:text-xl">
       <a
         id="header"
         href={"/home"}
-        className="cursor-pointer bg-white hover:bg-black text-center hover:text-white hover:duration-200 flex-1 h-[40px]   p-2  text-black"
+        className="cursor-pointer bg-white hover:bg-black text-center hover:text-white hover:duration-200 flex flex-1 h-[60px] flex-col items-center justify-center   p-2  text-black"
       >
-        HOME
+        <span>HOME</span>
       </a>
 
       <a
         href={token ? "/dashboard" : "/login"}
-        className="cursor-pointer bg-white hover:bg-black text-center hover:text-white hover:duration-200 flex-1 h-[40px] p-2  text-black"
+        className="cursor-pointer bg-white hover:bg-black text-center hover:text-white hover:duration-200 flex flex-1 h-[60px] p-2 flex-col items-center justify-center  text-black"
       >
-        DASHBOARD
+        <span>DASHBOARD</span>
       </a>
       {token ? (
         <LogoutButton />
       ) : (
         <a
           href="/login"
-          className="cursor-pointer bg-white  hover:bg-black   hover:text-white hover:duration-200  flex-1 h-[40px]  text-center  p-2    text-black"
+          className="cursor-pointer bg-white  hover:bg-black   hover:text-white hover:duration-200 flex  flex-1 h-[60px] flex-col items-center justify-center  text-center  p-2    text-black"
         >
-          SIGN-UP
+          <span>SIGN-UP</span>
         </a>
       )}
     </nav>
