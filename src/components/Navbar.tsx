@@ -6,7 +6,7 @@ interface NavbarProps {
 
 const Navbar = ({ token }: NavbarProps): React.ReactElement => {
   return (
-    <nav className="mobile:p-3 md:p-0  md:mt-0 md:border-t-0 bg-black gap-x-1 font-oswald font-semibold    flex flex-wrap mobile:items-center md:items-start mobile:text-xl  md:text-2xl mobile:w-full">
+    <nav className="sticky md:p-0  md:mt-0 md:border-t-0 bg-black gap-x-1 font-oswald font-semibold    flex flex-wrap mobile:items-center md:items-start mobile:text-xl  md:text-2xl mobile:w-full">
       <a
         id="header"
         href={"/home"}
