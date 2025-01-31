@@ -62,7 +62,7 @@ const UrlList = ({ setSlug, token }: UrlList) => {
                     onClick={() => {
                       setSlug(url.shortUrl);
                     }}
-                    className="mobile:self-center font-bold text-xs mobile:text-[11px] sm:text-xs md:text-sm lg:text-base uppercase mobile:w-[60%]  text-center bg-white p-3 mt-5 hover:bg-black hover:text-white transition-all duration-300"
+                    className="mobile:self-center md:self-start font-bold text-xs mobile:text-[11px] sm:text-xs md:text-sm lg:text-base uppercase mobile:w-[60%]  text-center bg-white p-3 mt-5 hover:bg-black hover:text-white transition-all duration-300"
                   >
                     CHECK URL ANALYTICS
                   </button>
@@ -72,7 +72,7 @@ const UrlList = ({ setSlug, token }: UrlList) => {
           ))}
         </div>
       ) : (
-        <div className="text-5xl text-white p-5 text-center border-b-2 font-mono">
+        <div className="md:text-5xl text-white p-5 text-center font-mono h-[310px]  mobile:text-2xl">
           NO URLS YET
         </div>
       )}
