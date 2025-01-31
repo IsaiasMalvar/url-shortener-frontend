@@ -23,6 +23,13 @@ export const getDataset = (data: Click[]) => {
   return reversedDataset;
 };
 
+export const getTotalClicksAmount = (data: Click[]) => {
+  const totalClickCount = data.reduce((accumulator, { count }) => {
+    return accumulator + count;
+  }, 0);
+  return totalClickCount;
+};
+
 export const chartOptions: ChartOptions<"bar"> = {
   maintainAspectRatio: false,
 
