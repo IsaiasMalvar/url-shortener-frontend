@@ -10,6 +10,7 @@ const useUser = () => {
     setErrorMessage,
     setIsLoading,
   } = useAppContext();
+
   const apiUrl = import.meta.env.VITE_API_URL;
   const loginEndpoint = apiUrl + "/api/auth/public/login";
   const registerEndpoint = apiUrl + "/api/auth/public/register";

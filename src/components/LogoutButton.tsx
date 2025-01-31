@@ -15,7 +15,7 @@ const LogoutButton = (): React.ReactElement => {
   return (
     <button
       onClick={onLogout}
-      className="cursor-pointer bg-white  hover:bg-black   hover:text-white hover:duration-200  flex-1 h-[40px]  text-center  p-2    text-black"
+      className="cursor-pointer bg-white  hover:bg-black   hover:text-white hover:duration-200  flex-1 h-[60px]  text-center  p-2    text-black"
     >
       LOGOUT
     </button>
