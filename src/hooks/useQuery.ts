@@ -7,8 +7,10 @@ import {
   UsePostRequestOptions,
 } from "../types/data";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const fetchTotalClicks = async (token: string) => {
-  const response = await fetch("http://localhost:8080/api/urls/totalClicks", {
+  const response = await fetch(`${apiUrl}/api/urls/totalClicks`, {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -21,16 +23,13 @@ const fetchTotalClicks = async (token: string) => {
 };
 
 const fetchClicksPerUrl = async (token: string, slug: string) => {
-  const response = await fetch(
-    `http://localhost:8080/api/urls/analytics/${slug}`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: "Bearer " + token,
-      },
+  const response = await fetch(`${apiUrl}/api/urls/analytics/${slug}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: "Bearer " + token,
     },
-  );
+  });
 
   const data = await response.json();
 
@@ -38,7 +37,7 @@ const fetchClicksPerUrl = async (token: string, slug: string) => {
 };
 
 const fetchAllUrls = async (token: string) => {
-  const response = await fetch("http://localhost:8080/api/urls/myurls", {
+  const response = await fetch(`${apiUrl}/api/urls/myurls`, {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -57,7 +56,7 @@ export const postUrl = async ({
   data: URLRequest;
   token: string;
 }): Promise<URLResponse> => {
-  const response = await fetch("http://localhost:8080/api/urls/shorten", {
+  const response = await fetch(`${apiUrl}/api/urls/shorten`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

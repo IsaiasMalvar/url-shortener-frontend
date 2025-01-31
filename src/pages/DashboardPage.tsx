@@ -39,8 +39,8 @@ const DashboardPage = (): React.ReactElement => {
   }, [token, navigate]);
 
   return (
-    <div className="bg-black h-screen flex  flex-col mobile:justify-center mobile:items-center">
-      <div className="w-full h-[50%] flex">
+    <div className="bg-black h-auto flex -mb-44  flex-col mobile:justify-center mobile:items-center">
+      <div className="w-full h-[50%] flex mb-20 mt-20">
         <div className="w-[50%] mobile:w-full h-full p-3">
           {guaranteedToken && <UrlChart token={guaranteedToken} slug={slug} />}
         </div>
