@@ -55,7 +55,7 @@ const HomePage = (): React.ReactElement => {
 
           <a
             href={guaranteedToken ? "/dashboard" : "/login"}
-            className="relative cursor-pointer font-bold text-xl sm:text-2xl px-6 py-3 rounded-md bg-gradient-to-r from-gray-50 to-gray-500 text-black  hover:from-gray-700 hover:to-gray-900 hover:text-white transition-all duration-300"
+            className="relative text-center cursor-pointer font-bold text-xl sm:text-2xl px-6 py-3 rounded-md bg-gradient-to-r from-gray-50 to-gray-500 text-black  hover:from-gray-700 hover:to-gray-900 hover:text-white transition-all duration-300"
           >
             CLICK HERE TO SHORTEN URL
           </a>
