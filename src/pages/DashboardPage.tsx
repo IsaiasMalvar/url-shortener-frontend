@@ -45,7 +45,7 @@ const DashboardPage = (): React.ReactElement => {
           {guaranteedToken && <UrlChart token={guaranteedToken} slug={slug} />}
         </div>
       </div>
-      <div className="w-full h-1/2 flex justify-between">
+      <div className="w-full h-[436px] flex justify-between">
         {guaranteedToken && (
           <UrlList token={guaranteedToken} setSlug={setSlug} />
         )}
