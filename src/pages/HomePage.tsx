@@ -29,7 +29,7 @@ const HomePage = (): React.ReactElement => {
             URLess
           </motion.h1>
 
-          <div className="bg-white text-black p-4 rounded-md shadow-lg">
+          <div className="bg-white text-black p-4  shadow-lg">
             <h2 className="font-oswald text-2xl sm:text-4xl text-center">
               SHORT, SWEET, AND TRACKED
             </h2>
@@ -44,18 +44,9 @@ const HomePage = (): React.ReactElement => {
         </section>
 
         <section className="md:w-1/2 flex flex-col items-center gap-6">
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="block md:hidden font-oswald text-5xl"
-          >
-            URLess
-          </motion.h1>
-
           <a
             href={guaranteedToken ? "/dashboard" : "/login"}
-            className="relative text-center cursor-pointer font-bold text-xl sm:text-2xl px-6 py-3 rounded-md bg-gradient-to-r from-gray-50 to-gray-500 text-black  hover:from-gray-700 hover:to-gray-900 hover:text-white transition-all duration-300"
+            className="relative text-center cursor-pointer font-bold text-xl sm:text-2xl px-6 py-3 rounded-md bg-white  text-black  hover:bg-gray-800 hover:text-white transition-all duration-300"
           >
             CLICK HERE TO SHORTEN URL
           </a>
