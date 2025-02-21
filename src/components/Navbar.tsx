@@ -28,7 +28,7 @@ const Navbar = ({ token }: NavbarProps): React.ReactElement => {
           href="/login"
           className="cursor-pointer bg-white  hover:bg-black   hover:text-white hover:duration-200 flex  flex-1 h-[60px] flex-col items-center justify-center  text-center  p-2    text-black"
         >
-          <span>SIGN-UP</span>
+          <span>LOGIN</span>
         </a>
       )}
     </nav>
